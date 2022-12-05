@@ -1,14 +1,29 @@
-//array din memorie e considerat backendul nostru
-//acest query e API-ul oe care il folosim pt a primi informatiile
-
 import contacts from './data.js';
 
 export const findContacts = (needle = 'query') => {
-  // needle = ac din carul cu fan
-
   const results = contacts.filter((contact) => {
-    return needle.trim() === contact.name;
+    const values = Object.values(contact);
+    // [1, 'Carol', 'Carolson', '0744', 'caolr@carol.ro']
+
+    const haystack = values.reduce((haystack, value) => {
+      if (typeof value === 'string') {
+        haystack += value;
+      }
+
+      return haystack;
+    }, '');
+
+    if (haystack.includes(needle)) {
+      return true;
+    }
+
+    return false;
   });
-  // trim ia si cu spatii inainte dupa nume
+
   return results;
+};
+
+export const createContact = (contact) => {
+  // push mutates
+  contacts.push(contact);
 };
