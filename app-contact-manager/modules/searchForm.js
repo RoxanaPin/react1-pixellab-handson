@@ -1,6 +1,10 @@
 //current target este elementul pe care am rulat addEventListener
-
 //q = numele inputului
+// ? = afirmativ si : e negativ
+
+// trim = supress empty string
+
+// currentTarget este elementul pe care am rulat addEventListener
 
 import { addMessage, clearMessages } from './notificationBar.js';
 import { findContacts } from './query.js';
@@ -18,7 +22,11 @@ searchForm.addEventListener('submit', (event) => {
   // am rulat addEventListener
   const form = event.currentTarget;
   const queryInput = form.q;
-  const queryString = queryInput.value;
+  const queryString = queryInput.value.trim();
+
+  if (queryString.length <= 3) {
+    return;
+  }
 
   clearMessages();
   stage.innerHTML = '';
@@ -62,5 +70,3 @@ searchForm.addEventListener('submit', (event) => {
 });
 
 export default searchForm;
-
-// ? = afirmativ si : e negativ
