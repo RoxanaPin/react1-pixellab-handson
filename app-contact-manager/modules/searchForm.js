@@ -1,9 +1,7 @@
 //current target este elementul pe care am rulat addEventListener
 //q = numele inputului
 // ? = afirmativ si : e negativ
-
 // trim = supress empty string
-
 // currentTarget este elementul pe care am rulat addEventListener
 
 import { addMessage, clearMessages } from './notificationBar.js';
